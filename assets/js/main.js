@@ -1,0 +1,85 @@
+(function($) {
+    "use strict";
+
+    // backtop functions
+    $( '#backtotop' ).on( 'click', function () {
+      $( 'html, body' ).animate( { scrollTop: 0 }, 800 );
+      return false;
+    });
+
+    $( window ).on( 'scroll', function () {
+      if ( $( this ).scrollTop() > 100 ) {
+        $( '#backtotop' ).fadeIn( 1000, function() {
+          $( 'span' , this ).fadeIn( 100 );
+        });
+      } else {
+        $( '#backtotop' ).fadeOut( 1000, function() {
+          $( 'span' , this ).fadeOut( 100 );
+        });
+      }
+    });
+    // end function backtop
+
+    // Menu Mobile
+    $('.main-menu-mobile').each( function() {
+
+      var menu = $( '.main-menu-mobile' );
+      menu.find( '.menu-item-has-children > a' ).after( '<button class="dropdown-toggle" aria-expanded="false"></button>' );
+
+      $('.secondary-toggle').click( function(){
+        menu.slideToggle('500');
+        $( this ).toggleClass( 'toggled-on' );
+      });
+
+      $( '.dropdown-toggle', this ).click( function(){
+        $( this ).toggleClass( 'toggled-on' );
+        $( this ).next( '.children, .sub-menu' ).toggleClass( 'toggled-on' );
+      });
+
+      $( '.close-menu' ).click( function() {
+        $( '.main-menu-mobile' ).hide( '500' );
+      });
+
+    });
+    // end function Menu Mobile
+
+    $('.mobile-menu .menu-item-has-children').prepend('<i class="fa fa-angle-down"></i>');
+
+    $('.mobile-menu .menu-item-has-children > i').click(function(event) {
+      $(this).parent().toggleClass('active');
+    });
+
+    $('.rt-navbar-toggle, .close-menu, .overlay').click(function(event) {
+       $('.site').toggleClass('mobile-menu-active');
+    });
+
+    // $('.rt__posts_sliders').slick({
+    //   speed: 300,
+    //   slidesToShow: 3,
+    //   slidesToScroll: 1,
+    //   autoplay: true,
+    //   autoplaySpeed: 10000,
+    //   arrows: true,
+    //   prevArrow: '<button type="button" class="slick-prev"></button>',
+    //   nextArrow: '<button type="button" class="slick-next"></button>',
+    //   responsive: [
+    //   {
+    //     breakpoint: 769,
+    //     settings: {
+    //       slidesToShow: 2,
+    //       slidesToScroll: 1,
+    //       arrows: true,
+    //     }
+    //   },
+    //   {
+    //     breakpoint: 321,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //       arrows: true,
+    //     }
+    //   },
+    //   ]
+    // });
+
+})(jQuery);

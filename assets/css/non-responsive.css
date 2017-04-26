@@ -1,0 +1,49 @@
+.content-area {
+    width: 70%;
+    float: left;
+}
+
+.widget-area {
+    width: 30%;
+    float: left;
+}
+
+.sidebar-left-right .content-area {
+    width: 60%;
+}
+
+.sidebar-left-right .widget-area {
+    width: 20%;
+}
+
+.sidebar-left .content-area {
+    left: 30%;
+}
+
+.sidebar-left .widget-area {
+    right: 70%;
+}
+
+.sidebar-left-right .content-area {
+    left: 20%;
+}
+
+.sidebar-left-right #secondary-1.widget-area {
+    right: 60%;
+}
+
+.col-sm-6 {
+    width: 25%;
+}
+
+.rt-navbar-toggle {
+    display: none;
+}
+
+.primary-menu-container {
+    display: block !important;
+}
+
+.main-navigation {
+    background: transparent;
+}
