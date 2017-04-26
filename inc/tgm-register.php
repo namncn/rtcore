@@ -19,7 +19,7 @@ function raothue_register_required_plugins() {
 		array(
 			'name'     => esc_html__( 'RT Core', 'raothue' ),
 			'slug'     => 'rt-plugin',
-			'source'   => get_template_directory_uri() . '/plugins/rt-plugin.zip',
+			'source'   => 'https://github.com/namncn/rt-plugin/archive/master.zip',
 			'required' => true,
 		),
 		array(
