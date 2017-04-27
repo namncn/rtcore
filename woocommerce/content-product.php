@@ -26,8 +26,15 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
+
+$colums_lg = rt_option( 'colums_product_lg', null, false );
+$colums_md = rt_option( 'colums_product_md', null, false );
+$colums_sm = rt_option( 'colums_product_sm', null, false );
+$colums_xs = rt_option( 'colums_product_xs', null, false );
+
+$colums_classes = $colums_lg . ' ' . $colums_md . ' ' . $colums_sm . ' ' . $colums_xs;
 ?>
-<li <?php post_class( 'col-lg-3 col-md-4 col-sm-6 col-xs-12' ); ?>>
+<li <?php post_class( $colums_classes ); ?>>
 	<div class="product_item">
 	<?php
 	/**
