@@ -585,15 +585,15 @@ final class RT_Customizer_Manager {
 		) );
 
 		$wp_customize->add_control( 'colums_product_lg', array(
-			'type' => 'select',
-			'label'       => esc_html__( 'Hiển thị bao nhiêu cột sản phẩm trên màn hình cỡ lớn ( > 1200px )', 'rt-theme' ),
-			'panel'       => 'rt_general_option_panel',
-			'section'     => 'product',
-			'priority'    => 10,
-			'choices' => array(
-				'col-lg-3' => esc_html__( '4 Cột', 'rt-theme' ),
-				'col-lg-4' => esc_html__( '3 Cột', 'rt-theme' ),
-				'col-lg-6' => esc_html__( '2 Cột', 'rt-theme' ),
+			'type'     => 'select',
+			'label'    => esc_html__( 'Hiển thị bao nhiêu cột sản phẩm trên màn hình cỡ lớn ( > 1200px )', 'rt-theme' ),
+			'panel'    => 'rt_general_option_panel',
+			'section'  => 'product',
+			'priority' => 10,
+			'choices'  => array(
+				'col-lg-3'  => esc_html__( '4 Cột', 'rt-theme' ),
+				'col-lg-4'  => esc_html__( '3 Cột', 'rt-theme' ),
+				'col-lg-6'  => esc_html__( '2 Cột', 'rt-theme' ),
 				'col-lg-12' => esc_html__( '1 Cột', 'rt-theme' ),
 			),
 		) );
@@ -605,15 +605,15 @@ final class RT_Customizer_Manager {
 		) );
 
 		$wp_customize->add_control( 'colums_product_md', array(
-			'type' => 'select',
-			'label'       => esc_html__( 'Hiển thị bao nhiêu cột sản phẩm trên màn hình cỡ vừa', 'rt-theme' ),
-			'panel'       => 'rt_general_option_panel',
-			'section'     => 'product',
-			'priority'    => 20,
-			'choices' => array(
-				'col-md-3' => esc_html__( '4 Cột', 'rt-theme' ),
-				'col-md-4' => esc_html__( '3 Cột', 'rt-theme' ),
-				'col-md-6' => esc_html__( '2 Cột', 'rt-theme' ),
+			'type'     => 'select',
+			'label'    => esc_html__( 'Hiển thị bao nhiêu cột sản phẩm trên màn hình cỡ vừa', 'rt-theme' ),
+			'panel'    => 'rt_general_option_panel',
+			'section'  => 'product',
+			'priority' => 20,
+			'choices'  => array(
+				'col-md-3'  => esc_html__( '4 Cột', 'rt-theme' ),
+				'col-md-4'  => esc_html__( '3 Cột', 'rt-theme' ),
+				'col-md-6'  => esc_html__( '2 Cột', 'rt-theme' ),
 				'col-md-12' => esc_html__( '1 Cột', 'rt-theme' ),
 			),
 		) );
@@ -631,9 +631,9 @@ final class RT_Customizer_Manager {
 			'section'     => 'product',
 			'priority'    => 30,
 			'choices' => array(
-				'col-sm-3' => esc_html__( '4 Cột', 'rt-theme' ),
-				'col-sm-4' => esc_html__( '3 Cột', 'rt-theme' ),
-				'col-sm-6' => esc_html__( '2 Cột', 'rt-theme' ),
+				'col-sm-3'  => esc_html__( '4 Cột', 'rt-theme' ),
+				'col-sm-4'  => esc_html__( '3 Cột', 'rt-theme' ),
+				'col-sm-6'  => esc_html__( '2 Cột', 'rt-theme' ),
 				'col-sm-12' => esc_html__( '1 Cột', 'rt-theme' ),
 			),
 		) );
@@ -645,15 +645,15 @@ final class RT_Customizer_Manager {
 		) );
 
 		$wp_customize->add_control( 'colums_product_xs', array(
-			'type' => 'select',
-			'label'       => esc_html__( 'Hiển thị bao nhiêu cột sản phẩm trên màn hình điện thoại', 'rt-theme' ),
-			'panel'       => 'rt_general_option_panel',
-			'section'     => 'product',
-			'priority'    => 40,
-			'choices' => array(
-				'col-xs-3' => esc_html__( '4 Cột', 'rt-theme' ),
-				'col-xs-4' => esc_html__( '3 Cột', 'rt-theme' ),
-				'col-xs-6' => esc_html__( '2 Cột', 'rt-theme' ),
+			'type'     => 'select',
+			'label'    => esc_html__( 'Hiển thị bao nhiêu cột sản phẩm trên màn hình điện thoại', 'rt-theme' ),
+			'panel'    => 'rt_general_option_panel',
+			'section'  => 'product',
+			'priority' => 40,
+			'choices'  => array(
+				'col-xs-3'  => esc_html__( '4 Cột', 'rt-theme' ),
+				'col-xs-4'  => esc_html__( '3 Cột', 'rt-theme' ),
+				'col-xs-6'  => esc_html__( '2 Cột', 'rt-theme' ),
 				'col-xs-12' => esc_html__( '1 Cột', 'rt-theme' ),
 			),
 		) );
@@ -661,12 +661,13 @@ final class RT_Customizer_Manager {
 		// Gutter Width setting.
 		$wp_customize->add_setting( 'gutter_width' , array(
 			'default'           => rt_default( 'gutter_width' ),
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
 		) );
 
 		$wp_customize->add_control( 'gutter_width', array(
 			'type' => 'number',
-			'label'       => esc_html__( 'Hiển thị bao nhiêu cột sản phẩm trên màn hình điện thoại', 'rt-theme' ),
+			'label'       => esc_html__( 'Khoảng cách giữa các sản phẩm', 'rt-theme' ),
 			'panel'       => 'rt_general_option_panel',
 			'section'     => 'product',
 			'priority'    => 50,

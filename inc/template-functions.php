@@ -238,20 +238,27 @@ function rt_excerpt_length( $length ) {
 }
 add_filter( 'excerpt_length', 'rt_excerpt_length', 999 );
 
-if ( '#ea2b33' != rt_option( 'main_bg_color', null, false ) ) {
 /**
  * Css for our theme.
  *
  * @return string Css
  */
-function rt_main_bg_color_option() {
-	$css = '.main-navigation, .widget-title, .site-footer, .top-footer, .copyright, .mobile-menu-container .close-menu {background:' . rt_option( 'main_bg_color', null, false ) . ';}';
-	$css .= '.header-search .search-form .search-submit {color:' . rt_option( 'main_bg_color', null, false ) . ';}';
+function rt_customizer_css_option() {
+	$css= '';
+
+	if ( '#ea2b33' != rt_option( 'main_bg_color', null, false ) ) {
+		$css = '.main-navigation, .widget-title, .site-footer, .top-footer, .copyright, .mobile-menu-container .close-menu {background:' . rt_option( 'main_bg_color', null, false ) . ';}';
+		$css .= '.header-search .search-form .search-submit {color:' . rt_option( 'main_bg_color', null, false ) . ';}';
+	}
+
+	if ( $gutter_width = rt_option( 'gutter_width', null, false ) ) {
+		$css .= ".rt__grid_products .product{padding-left:{$gutter_width}px;padding-right:{$gutter_width}px;}";
+		$css .= ".rt__grid_products.row{margin-left:-{$gutter_width}px;margin-right:-{$gutter_width}px;}";
+	}
 
 	wp_add_inline_style( 'rt-main', $css );
 }
-add_action( 'wp_enqueue_scripts', 'rt_main_bg_color_option', 11 );
-}
+add_action( 'wp_enqueue_scripts', 'rt_customizer_css_option', 11 );
 
 // Support shortcodes in rt textarea widgets
 add_filter('rt_textarea_widget', 'do_shortcode');

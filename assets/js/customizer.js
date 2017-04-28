@@ -307,6 +307,31 @@
 		} );
 	} );
 
+    // Gutter width.
+    wp.customize( 'gutter_width', function( value ) {
+        value.bind( function( to ) {
+            if ( ! to ) {
+                $( '.rt__grid_products .product' ).css({
+                    'padding-left': '15px',
+                    'padding-right': '15px',
+                });
+                $( '.rt__grid_products.row' ).css({
+                    'margin-left': '-15px',
+                    'margin-right': '-15px',
+                });
+            } else {
+                $( '.rt__grid_products .product' ).css({
+                    'padding-left': to + 'px',
+                    'padding-right': to + 'px',
+                });
+                $( '.rt__grid_products.row' ).css({
+                    'margin-left': '-' + to + 'px',
+                    'margin-right': '-' + to + 'px',
+                });
+            }
+        } );
+    } );
+
     // Copyright background color.
     wp.customize( 'copyright', function( value ) {
         value.bind( function( to ) {
