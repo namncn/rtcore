@@ -1,0 +1,287 @@
+/*=======================
+* MODAL POPUP STYLE
+========================*/
+
+html.rt-quick-view-is-open,
+html.rt-quick-view-is-open body {
+    overflow: hidden;
+}
+
+#rt-quick-view-modal {
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1400;
+    opacity: 0;
+    text-align: center;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#rt-quick-view-modal:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0;
+}
+
+#rt-quick-view-modal .rt-quick-view-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba( 0, 0, 0, 0.8);
+}
+
+#rt-quick-view-modal .rt-wcqv-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+    visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    text-align: left;
+    height: 600px;
+    width: 1000px;
+}
+
+#rt-quick-view-modal .rt-wcqv-main {
+    -webkit-transform: translateY(20%);
+    -moz-transform: translateY(20%);
+    -ms-transform: translateY(20%);
+    transform: translateY(20%);
+    opacity: 0;
+    height: 100%;
+   /* -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;*/
+    /*-webkit-box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.2);*/
+}
+
+#rt-quick-view-modal.open,
+#rt-quick-view-modal.open .rt-wcqv-wrapper {
+    visibility: visible;
+    opacity: 1;
+}
+
+#rt-quick-view-modal #rt-quick-view-content {
+    height: 100%;
+}
+
+#rt-quick-view-modal .rt-wcqv-main:after,
+#rt-quick-view-modal .rt-wcqv-main:before {
+    content: '';
+    display: table;
+    clear: both;
+}
+#rt-quick-view-modal.open .rt-wcqv-main {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+    height: 100%;
+    /*overflow-y: scroll;*/
+    position: relative;
+    background: white;
+    padding: 50px 30px 30px;
+}
+#rt-quick-view-close {
+    position: absolute;
+    top: 30px;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 29px;
+    z-index: 2;
+    opacity: 0.5;
+    font-weight: bold;
+    border-radius: 50%;
+    background: #ccc;
+    color: white !important;
+}
+#rt-quick-view-close:hover {
+    color: #eba03d !important;
+    opacity: 1;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+}
+#rt-quick-view-content div.images {
+    width: 40%;
+    float: left;
+    opacity: 1 !important;
+}
+#rt-quick-view-content div.summary {
+    margin: 0;
+    padding: 0 15px 15px 15px;
+    width: 60%;
+    float: left;
+}
+#rt-quick-view-content div.woocommerce-product-rating:after,
+#rt-quick-view-content div.woocommerce-product-rating:before {
+    content: '';
+    display: table;
+    clear: both;
+}
+#rt-quick-view-content div.woocommerce-product-rating a.woocommerce-review-link {
+    display: none;
+}
+#rt-quick-view-content .onsale {
+    top: 5px;
+    right: auto;
+    left: 5px;
+    background: #da1818;
+    padding: 5px 19px;
+    border-radius: 5px;
+    line-height: 1.5em;
+    min-height: inherit;
+}
+
+li.product .rt-wcqv-button .blockUI.blockOverlay:before {
+    background: none;
+}
+
+.rt-wcqv-main div.product .product_title a {
+    font-size: 28px;
+    color: #333;
+    font-weight: bold;
+}
+
+.rt-wcqv-main div.product .product_title a:hover {
+    color: #eba03d;
+}
+
+.rt-wcqv-main .posted_in {
+    font-size: 14px;
+    color: #898989;
+}
+
+.rt-wcqv-main .posted_in a {
+    color: #da1818;
+}
+
+.rt-wcqv-main .sale-price {
+    font-weight: bold;
+    color: #da1818;
+    font-size: 24px;
+}
+
+.rt-wcqv-main .regular-price {
+    font-size: 14px;
+    color: #898989;
+    line-height: 20px;
+    margin-left: 15px;
+    text-decoration: line-through;
+}
+
+.rt-wcqv-main .woocommerce-product-details__short-description strong {
+    display: block;
+    color: #222;
+    font-weight: 300;
+}
+
+.rt-wcqv-main .woocommerce-product-details__short-description {
+    margin-top: 25px;
+    color: #898989;
+    border-color: #eee;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+    padding-top: 20px;
+}
+
+.quantity_wanted_p {
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.woocommerce div.product form.cart .quantity_wanted_p .quantity {
+    margin: 5px 0px 15px;
+    overflow: hidden;
+    display: inline-flex;
+    width: 100%;
+}
+
+.rt-wcqv-main .quantity_wanted_p .quantity input {
+    padding: 13px;
+    margin: 0px;
+    display: block;
+    float: left;
+    height: 45px;
+    width: 68% !important;
+    outline: none;
+}
+
+.rt-wcqv-main label.slg_g {
+    width: 85px;
+    line-height: 40px;
+    font-weight: 400;
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.rt-wcqv-main .quantity_wanted_p .btn_num {
+    padding: 8px 16px 14px;
+    font-size: 19px;
+    border: solid 1px #ddd;
+    display: block;
+    width: 45px;
+    height: 45px;
+    float: left;
+    cursor: pointer;
+    color: #333;
+}
+
+.rt-wcqv-main .quantity_wanted_p .btn_num:hover {
+    background: #eba03d;
+    cursor: pointer;
+    color: white;
+}
+
+.rt-wcqv-main .rt_qv_btn {
+    height: 45px;
+    background: #da1818;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 0px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 24px;
+    outline: none;
+}
+
+.rt-wcqv-main .slick-slide {
+    outline: none;
+}
+
+.rt-wcqv-main .rt_product_thumbnails_gallery .slick-slide {
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+@media( max-width: 480px ) {
+    #rt-quick-view-content div.images,
+    #rt-quick-view-content div.summary {
+        width: 100%;
+        float: none;
+    }
+    #rt-quick-view-content div.summary {
+        margin: 0;
+        padding: 0 15px 15px 15px;
+        width: 100%;
+        float: left;
+    }
+}

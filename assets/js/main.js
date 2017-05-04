@@ -82,4 +82,31 @@
     //   ]
     // });
 
+    if ( tooltip.on_off ) {
+        $('.site-main').tooltip({
+            track: true,
+            items: '[data-tooltip]',
+            content: function() {
+                var tooltip_json = $(this).data( 'tooltip' );
+                var title = $(this).find('.rt_woocommerce-loop-product__title a').text();
+                var price = $(this).find('.price').html();
+                var html = '';
+
+                if ( tooltip.image ) {
+                    html += '<div class="tooltip_image"><img src="' + tooltip_json.image + '" alt=""></div>';
+                }
+
+                if ( tooltip.title ) {
+                    html +=  '<div class="tooltip_title">' + title + '</div>';
+                }
+
+                if ( tooltip.price ) {
+                    html += '<div class="tooltip_price">' + price + '</div>';
+                }
+
+                return html;
+            }
+        });
+    }
+
 })(jQuery);

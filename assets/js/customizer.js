@@ -347,6 +347,21 @@
         } );
     } );
 
+    // Copyright background color.
+    wp.customize( 'quickview', function( value ) {
+        value.bind( function( to ) {
+            if ( ! to ) {
+                $( '.rt-wcqv-button' ).css({
+                    display: 'none',
+                });
+            } else {
+                $( '.rt-wcqv-button' ).css({
+                    display: 'block',
+                });
+            }
+        } );
+    } );
+
 	// Color Scheme CSS.
 	api.bind( 'preview-ready', function() {
 		api.preview.bind( 'update-color-scheme-css', function( css ) {

@@ -4,18 +4,25 @@
  *
  * @package Raothue
  */
+
 ?>
 
 <nav id="site-navigation" class="main-navigation">
 	<div class="container">
 		<div class="row">
 
+			<?php if ( is_active_sidebar( 'vertical-mega-menu' ) && rt_option( 'vertical_mega_menu', null, false ) ) : ?>
+			<div class="vertical-mega-menu col-lg-3 col-md-3 col-xs-3">
+				<?php dynamic_sidebar( 'vertical-mega-menu' ); ?>
+			</div>
+			<?php endif; ?>
+
 			<?php
 				wp_nav_menu( array(
 					'theme_location'  => 'primary',
 					'menu_id'         => 'primary-menu',
 					'menu_class'      => 'menu clearfix',
-					'container_class' => rt_option( 'enable_header_search', null, false ) ? 'primary-menu-container visible-lg col-md-9' : 'primary-menu-container visible-lg col-md-12',
+					'container_class' => rt_option( 'enable_header_search', null, false ) ? 'primary-menu-container visible-lg col-lg-9 col-md-9' : 'primary-menu-container visible-lg col-md-12',
 					'fallback_cb'     => 'primary_menu_fallback',
 				));
 			?>
@@ -26,7 +33,7 @@
 				<?php get_search_form( 'searchform-header' ); ?>
 			</div>
 
-			<div class="hidden-lg col-sm-3 col-xs-3">
+			<div class="hidden-lg col-md-3 col-sm-3 col-xs-3">
 
 			<?php else : ?>
 

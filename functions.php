@@ -112,8 +112,18 @@ function rt_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Header Right', 'rt-theme' ),
+		'name'          => esc_html__( 'Quảng cáo', 'rt-theme' ),
 		'id'            => 'header-right',
+		'description'   => esc_html__( 'Thêm tiện ích vào đây để hiển thị nội dung quảng cáo trên header.', 'rt-theme' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Menu dọc bên trái', 'rt-theme' ),
+		'id'            => 'vertical-mega-menu',
 		'description'   => esc_html__( 'Thêm tiện ích vào đây để hiển thị nội dung quảng cáo trên header.', 'rt-theme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
@@ -270,6 +280,7 @@ function rt_enqueue_scripts() {
 	wp_enqueue_style( 'slick', get_theme_file_uri( 'assets/css/slick.min.css' ), array(), '1.6.0' );
 
 	wp_enqueue_style( 'rt-main', get_theme_file_uri( 'assets/css/main.css' ), array(), '1.0.0' );
+	wp_enqueue_style( 'jquery-ui-base', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', array(), '1.0.0' );
 
 	if ( ! rt_option( 'responsive', true, false ) ) {
 		wp_enqueue_style( 'rt-non-responsive', get_theme_file_uri( 'assets/css/non-responsive.css' ), array(), '1.0.0' );
@@ -285,7 +296,19 @@ function rt_enqueue_scripts() {
 
 	}
 
+	if ( function_exists( 'WC' ) && rt_option( 'tooltip', null, false ) ) {
+		wp_enqueue_script( 'jquery-ui-tooltip' );
+
+	}
+
 	wp_enqueue_script( 'rt-main',  get_theme_file_uri( 'assets/js/main.js' ), array( 'jquery' ), '1.0.0', true );
+
+	wp_localize_script( 'rt-main', 'tooltip', array(
+		'on_off' => rt_option( 'tooltip', null, false ),
+		'image' => rt_option( 'tooltip_image', null, false ),
+		'title' => rt_option( 'tooltip_title', null, false ),
+		'price' => rt_option( 'tooltip_price', null, false ),
+	) );
 
 }
 add_action( 'wp_enqueue_scripts', 'rt_enqueue_scripts' );
@@ -326,6 +349,13 @@ function rt_default( $name ) {
 			'colums_product_sm'        => 'col-sm-6',
 			'colums_product_xs'        => 'col-xs-12',
 			'gutter_width'             => 15,
+			'quickview'                => true,
+			'quickview_mobile'         => false,
+			'tooltip'                  => true,
+			'tooltip_image'            => true,
+			'tooltip_title'            => true,
+			'tooltip_price'            => true,
+			'vertical_mega_menu'       => false,
 			'rt_callback_email'        => '',
 			'rt_callback_subject'      => esc_html__( 'Yêu cầu gọi lại', 'rt-theme' ),
 			'rt_callback_message'      => esc_html__( 'Có yêu cầu gọi lại theo số điện thoại', 'rt-theme' ),
@@ -476,3 +506,8 @@ require get_template_directory() . '/inc/tgm-register.php';
  * Load Sidebar feature class.
  */
 require get_template_directory() . '/inc/sidebar.php';
+
+/**
+ * Load RT Quickview feature class.
+ */
+require get_template_directory() . '/inc/quickview.php';

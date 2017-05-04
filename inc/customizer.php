@@ -673,25 +673,129 @@ final class RT_Customizer_Manager {
 			'priority'    => 50,
 		) );
 
-		// Buy Now Btn setting.
-		// $ưp_customize->add_setting( 'buy_nơ_btn' , ẩy(
-		// 	'default'           => rt_default( 'buy_nơ_btn' ),
-		// 	'sanitize_callback' => ẩy( __CLASS__, 'sanitize_value' ),
-		// ) );
+		// Quickview setting.
+		$wp_customize->add_setting( 'quickview' , array(
+			'default'           => rt_default( 'quickview' ),
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
 
-		// $ưp_customize->add_control( 'buy_nơ_btn', ẩy(
-		// 	'type'        => 'checkbox',
-		// 	'label'       => éc_html__( 'Bật/Tắt nút mua ngay', 'rt-thêm' ),
-		// 	'description' => éc_html__( 'Check để bật/uncheck để tắt', 'rt-thêm' ),
-		// 	'panel'       => 'rt_general_option_panel',
-		// 	'section'     => 'product',
-		// 	'priority'    => 20,
-		// ) );
+		$wp_customize->add_control( 'quickview', array(
+			'type' => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt Xem nhanh', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'product',
+			'priority'    => 60,
+		) );
+
+		// Quickview mobile setting.
+		$wp_customize->add_setting( 'quickview_mobile' , array(
+			'default'           => rt_default( 'quickview_mobile' ),
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'quickview_mobile', array(
+			'type' => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt Xem nhanh trên mobile', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'product',
+			'priority'    => 70,
+		) );
+
+		// Tooltip section
+		$wp_customize->add_section( 'tooltip', array(
+			'title'    => esc_html__( 'Tooltip', 'rt-theme' ),
+			'priority' => 30,
+			'panel'    => 'rt_general_option_panel',
+		) );
+
+		// Tooltip setting.
+		$wp_customize->add_setting( 'tooltip' , array(
+			'default'           => rt_default( 'tooltip' ),
+			// 'transport'         => 'postMessage',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'tooltip', array(
+			'type' => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt Tooltip', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'tooltip',
+			'priority'    => 10,
+		) );
+
+		// Tooltip image setting.
+		$wp_customize->add_setting( 'tooltip_image' , array(
+			'default'           => rt_default( 'tooltip_image' ),
+			// 'transport'         => 'postMessage',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'tooltip_image', array(
+			'type' => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt Hình ảnh trong Tooltip', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'tooltip',
+			'priority'    => 20,
+		) );
+
+		// Tooltip title setting.
+		$wp_customize->add_setting( 'tooltip_title' , array(
+			'default'           => rt_default( 'tooltip_title' ),
+			// 'transport'         => 'postMessage',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'tooltip_title', array(
+			'type' => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt Tiêu đề trong Tooltip', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'tooltip',
+			'priority'    => 30,
+		) );
+
+		// Tooltip price setting.
+		$wp_customize->add_setting( 'tooltip_price' , array(
+			'default'           => rt_default( 'tooltip_price' ),
+			// 'transport'         => 'postMessage',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'tooltip_price', array(
+			'type' => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt Giá cả trong Tooltip', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'tooltip',
+			'priority'    => 40,
+		) );
+
+		// Product category section
+		$wp_customize->add_section( 'vertical_mega_menu', array(
+			'title'    => esc_html__( 'Danh mục sản phẩm', 'rt-theme' ),
+			'priority' => 40,
+			'panel'    => 'rt_general_option_panel',
+		) );
+
+		// Product category setting.
+		$wp_customize->add_setting( 'vertical_mega_menu' , array(
+			'default'           => rt_default( 'vertical_mega_menu' ),
+			// 'transport'         => 'postMessage',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'vertical_mega_menu', array(
+			'type' => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt Danh mục sản phẩm', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'vertical_mega_menu',
+			'priority'    => 50,
+		) );
 
 		// Above content section
 		$wp_customize->add_section( 'above_content', array(
 			'title'    => esc_html__( 'Phần trên nội dung', 'rt-theme' ),
-			'priority' => 30,
+			'priority' => 40,
 			'panel'    => 'rt_general_option_panel',
 		) );
 
