@@ -355,7 +355,7 @@ function rt_default( $name ) {
 			'tooltip_image'            => true,
 			'tooltip_title'            => true,
 			'tooltip_price'            => true,
-			'vertical_mega_menu'       => false,
+			'vertical_mega_menu'       => true,
 			'rt_callback_email'        => '',
 			'rt_callback_subject'      => esc_html__( 'Yêu cầu gọi lại', 'rt-theme' ),
 			'rt_callback_message'      => esc_html__( 'Có yêu cầu gọi lại theo số điện thoại', 'rt-theme' ),
@@ -510,4 +510,6 @@ require get_template_directory() . '/inc/sidebar.php';
 /**
  * Load RT Quickview feature class.
  */
-require get_template_directory() . '/inc/quickview.php';
+if ( function_exists( 'WC' ) ) {
+	require get_template_directory() . '/inc/quickview.php';
+}

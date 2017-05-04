@@ -9,7 +9,7 @@
  * @version 1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) || ! function_exists( 'WC' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 
