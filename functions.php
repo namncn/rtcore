@@ -58,8 +58,9 @@ function rt_setup() {
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'primary'   => esc_html__( 'Primary Menu', 'rt-theme' ),
-		'secondary' => esc_html__( 'Mobile Menu', 'rt-theme' ),
+		'primary'            => esc_html__( 'Primary Menu', 'rt-theme' ),
+		'secondary'          => esc_html__( 'Mobile Menu', 'rt-theme' ),
+		'vertical-mega-menu' => esc_html__( 'Vertical Mega Menu', 'rt-theme' ),
 	) );
 
 	// Add theme support for Custom Logo.
@@ -114,16 +115,6 @@ function rt_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Quảng cáo', 'rt-theme' ),
 		'id'            => 'header-right',
-		'description'   => esc_html__( 'Thêm tiện ích vào đây để hiển thị nội dung quảng cáo trên header.', 'rt-theme' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name'          => esc_html__( 'Menu dọc bên trái', 'rt-theme' ),
-		'id'            => 'vertical-mega-menu',
 		'description'   => esc_html__( 'Thêm tiện ích vào đây để hiển thị nội dung quảng cáo trên header.', 'rt-theme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
@@ -356,12 +347,13 @@ function rt_default( $name ) {
 			'tooltip_title'            => true,
 			'tooltip_price'            => true,
 			'vertical_mega_menu'       => true,
+			'vertical_mega_menu_title' => esc_html__( 'Danh mục sản phẩm', 'rt-theme' ),
 			'rt_callback_email'        => '',
 			'rt_callback_subject'      => esc_html__( 'Yêu cầu gọi lại', 'rt-theme' ),
 			'rt_callback_message'      => esc_html__( 'Có yêu cầu gọi lại theo số điện thoại', 'rt-theme' ),
 			'rt_product_hotline'       => 'Hotline đặt hàng (07:00 - 22:00): <strong>093 777 83 77</strong> hoặc <strong>0976 79 5678</strong>',
 			'totop'                    => true,
-			'copyright'                => "<a rel='nofollow' target='_blank' href='http://thietkewebmienphi.com/' title='thiet ke website'>Design by RT Group</a>",
+			'copyright'                => '<a rel="nofollow" target="_blank" href="http://thietkewebmienphi.com/" title="thiet ke website">Design by RT Group</a>',
 		) );
 	}
 

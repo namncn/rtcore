@@ -65,11 +65,11 @@
 	wp.customize( 'main_bg_color', function( value ) {
 		value.bind( function( to ) {
 			if ( 'blank' === to ) {
-				$( '.main-navigation, .widget-title, .site-footer, .top-footer, .copyright, .mobile-menu-container .close-menu' ).css( {
+				$( '.main-navigation, .widget-title, .site-footer, .top-footer, .copyright, .close-menu' ).css( {
 					'background': 'transparent',
 				} );
 			} else {
-				$( '.main-navigation, .widget-title, .site-footer, .top-footer, .copyright, .mobile-menu-container .close-menu' ).css( {
+				$( '.main-navigation, .widget-title, .site-footer, .top-footer, .copyright, .close-menu' ).css( {
 					'background': to,
 				} );
 			}
@@ -331,6 +331,13 @@
             }
         } );
     } );
+
+    // vertical_mega_menu_title.
+  wp.customize( 'vertical_mega_menu_title', function( value ) {
+    value.bind( function( to ) {
+      $( '.vertical-mega-menu-title' ).text( to );
+    } );
+  } );
 
     // Copyright background color.
     wp.customize( 'copyright', function( value ) {

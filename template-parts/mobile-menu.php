@@ -7,7 +7,7 @@
 ?>
 
 <div class="mobile-menu-container">
-	<div class="close-menu"><?php esc_html_e( 'Đóng menu x', 'rt' ); ?></div>
+	<div class="close-menu"><?php printf( '%s <i class="fa fa-times" aria-hidden="true"></i>', esc_html__( 'Đóng menu', 'rt-theme' ) ); // WPCS: XSS OK.?></div>
 
 	<?php
 	/**

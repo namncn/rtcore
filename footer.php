@@ -47,6 +47,8 @@
 
 	<?php get_template_part( 'template-parts/mobile-menu' ); ?>
 
+	<?php get_template_part( 'template-parts/vertical-mega-mobile-menu' ); ?>
+
 	<div class="overlay"></div>
 
 	<?php if ( rt_option( 'totop', true, false ) ) : ?>

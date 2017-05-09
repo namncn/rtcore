@@ -557,6 +557,37 @@ final class RT_Customizer_Manager {
 			'priority'    => 10,
 		) );
 
+		// Product category setting.
+		$wp_customize->add_setting( 'vertical_mega_menu' , array(
+			'default'           => rt_default( 'vertical_mega_menu' ),
+			// 'transport'         => 'postMessage',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'vertical_mega_menu', array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt Danh mục sản phẩm', 'rt-theme' ),
+			'description' => esc_html__( 'Check để bật/Uncheck để tắt', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'navigation',
+			'priority'    => 20,
+		) );
+
+		// Product category setting.
+		$wp_customize->add_setting( 'vertical_mega_menu_title' , array(
+			'default'           => rt_default( 'vertical_mega_menu_title' ),
+			'transport'         => 'postMessage',
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'vertical_mega_menu_title', array(
+			'label'       => esc_html__( 'Tiêu đề của Menu', 'rt-theme' ),
+			'description' => esc_html__( 'Điền tiêu đề mà bạn muốn hiển thị cho Menu danh mục nằm trên Menu chính.', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'navigation',
+			'priority'    => 30,
+		) );
+
 		// Product section
 		$wp_customize->add_section( 'product', array(
 			'title'    => esc_html__( 'Sản phẩm', 'rt-theme' ),
@@ -768,28 +799,6 @@ final class RT_Customizer_Manager {
 			'panel'       => 'rt_general_option_panel',
 			'section'     => 'tooltip',
 			'priority'    => 40,
-		) );
-
-		// Product category section
-		$wp_customize->add_section( 'vertical_mega_menu', array(
-			'title'    => esc_html__( 'Danh mục sản phẩm', 'rt-theme' ),
-			'priority' => 40,
-			'panel'    => 'rt_general_option_panel',
-		) );
-
-		// Product category setting.
-		$wp_customize->add_setting( 'vertical_mega_menu' , array(
-			'default'           => rt_default( 'vertical_mega_menu' ),
-			// 'transport'         => 'postMessage',
-			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
-		) );
-
-		$wp_customize->add_control( 'vertical_mega_menu', array(
-			'type' => 'checkbox',
-			'label'       => esc_html__( 'Bật/Tắt Danh mục sản phẩm', 'rt-theme' ),
-			'panel'       => 'rt_general_option_panel',
-			'section'     => 'vertical_mega_menu',
-			'priority'    => 50,
 		) );
 
 		// Above content section

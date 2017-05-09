@@ -49,6 +49,10 @@ function rt_body_classes( $classes ) {
 		$classes[] = 'title-tagline-hidden';
 	}
 
+	if ( rt_option( 'vertical_mega_menu', null, false ) && is_active_sidebar( 'vertical-mega-menu' ) ) {
+		$classes[] = 'has-vertical-mega-menu';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'rt_body_classes' );
@@ -247,7 +251,7 @@ function rt_customizer_css_option() {
 	$css= '';
 
 	if ( '#ea2b33' != rt_option( 'main_bg_color', null, false ) ) {
-		$css = '.main-navigation, .widget-title, .site-footer, .top-footer, .copyright, .mobile-menu-container .close-menu {background:' . rt_option( 'main_bg_color', null, false ) . ';}';
+		$css = '.main-navigation, .widget-title, .site-footer, .top-footer, .copyright, .close-menu {background:' . rt_option( 'main_bg_color', null, false ) . ';}';
 		$css .= '.header-search .search-form .search-submit {color:' . rt_option( 'main_bg_color', null, false ) . ';}';
 	}
 
