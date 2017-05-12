@@ -76,6 +76,21 @@
 		} );
 	} );
 
+      // Submenu Background color.
+      wp.customize( 'submenu_bg_color', function( value ) {
+        value.bind( function( to ) {
+          if ( 'blank' === to ) {
+            $( '#primary-menu li ul.sub-menu' ).css( {
+              'background': 'transparent',
+            } );
+          } else {
+            $( '#primary-menu li ul.sub-menu' ).css( {
+              'background': to,
+            } );
+          }
+        } );
+      } );
+
 	// Link color.
 	wp.customize( 'link_color', function( value ) {
 		value.bind( function( to ) {

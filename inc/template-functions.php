@@ -260,6 +260,10 @@ function rt_customizer_css_option() {
 		$css .= ".rt__grid_products.row{margin-left:-{$gutter_width}px;margin-right:-{$gutter_width}px;}";
 	}
 
+	if ( $submenu_bg_color = rt_option( 'submenu_bg_color', null, false ) ) {
+		$css .= "#primary-menu li ul.sub-menu{background:{$submenu_bg_color}}";
+	}
+
 	wp_add_inline_style( 'rt-main', $css );
 }
 add_action( 'wp_enqueue_scripts', 'rt_customizer_css_option', 11 );

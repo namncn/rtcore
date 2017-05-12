@@ -31,9 +31,9 @@ get_header(); ?>
 			endwhile;
 
 			the_posts_pagination( array(
-				'prev_text' => '<span class="screen-reader-text">' .__( 'Trang trước', 'rt-theme' ) . '</span>',
-				'next_text' => '<span class="screen-reader-text">' . __( 'Trang sau', 'rt-theme' ) . '</span>',
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Trang', 'rt-theme' ) . ' </span>',
+				'prev_text' => '<span class="screen-reader-text">' . esc_html__( 'Trang trước', 'rt-theme' ) . '</span>',
+				'next_text' => '<span class="screen-reader-text">' .  esc_html__( 'Trang sau', 'rt-theme' ) . '</span>',
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . esc_html__( 'Trang', 'rt-theme' ) . ' </span>',
 			) );
 
 		else :

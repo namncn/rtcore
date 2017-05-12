@@ -22,16 +22,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $related_products ) : ?>
 
-	<section class="related">
+	<div class="related">
 
-		<h2 class="widget-title"><?php esc_html_e( 'Sản phẩm liên quan', 'woocommerce' ); ?></h2>
+		<h3 class="widget-title"><?php esc_html_e( 'Sản phẩm liên quan', 'woocommerce' ); ?></h3>
 
 		<?php woocommerce_product_loop_start(); ?>
 
 			<?php foreach ( $related_products as $related_product ) : ?>
 
 				<?php
-				 	$post_object = get_post( $related_product->get_id() );
+					$post_object = get_post( $related_product->get_id() );
 
 					setup_postdata( $GLOBALS['post'] =& $post_object );
 
@@ -41,8 +41,45 @@ if ( $related_products ) : ?>
 
 		<?php woocommerce_product_loop_end(); ?>
 
-	</section>
+	</div>
 
 <?php endif;
 
 wp_reset_postdata();
+
+if ( rt_option( 'related_on_off', null, false ) ) :
+?>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	"use strict";
+	$( '.related > ul' ).slick({
+		infinite: true,
+		speed: <?php rt_option( 'related_slider_speed' ); ?>,
+		slidesToShow: <?php rt_option( 'related_slider_show' ); ?>,
+		slidesToScroll: <?php rt_option( 'related_slider_scroll' ); ?>,
+		autoplay: <?php rt_option( 'related_slider_autoplay' ); ?>,
+		autoplaySpeed: <?php rt_option( 'related_slider_autoplayspeed' ); ?>,
+		arrows: <?php rt_option( 'related_slider_arrows' ); ?>,
+		prevArrow: '<button type="button" class="slick-prev"></button>',
+		nextArrow: '<button type="button" class="slick-next"></button>',
+		dots: false,
+		responsive: [
+		{
+		  breakpoint: 769,
+		  settings: {
+			slidesToShow: 2,
+			slidesToScroll: 1,
+		  }
+		},
+		{
+		  breakpoint: 321,
+		  settings: {
+			slidesToShow: 1,
+			slidesToScroll: 1,
+		  }
+		},
+		]
+	});
+});
+</script>
+<?php endif; ?>

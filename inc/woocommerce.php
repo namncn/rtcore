@@ -369,3 +369,14 @@ if ( rt_option( 'buy_now_btn', null, false ) ) {
 	}
 	add_action( 'rt_add_to_cart', 'rt_enable_disable_buynow_btn', 10 );
 }
+
+function rt_woocommerce_output_related_products_args( $args ) {
+	$args = array(
+		'posts_per_page' => rt_option( 'related_product_items', null, false ),
+		'columns'        => 4,
+		'orderby'        => 'rand',
+	);
+
+	return $args;
+}
+add_filter( 'woocommerce_output_related_products_args', 'rt_woocommerce_output_related_products_args' );

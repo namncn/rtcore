@@ -177,6 +177,19 @@ final class RT_Customizer_Manager {
 			'label'    => esc_html__( 'Chọn màu nền chủ đạo cho website', 'rt-theme' ),
 			'priority' => 30,
 		) ) );
+
+		// Submenu background settings.
+		$wp_customize->add_setting( 'submenu_bg_color' , array(
+			'default'           => rt_default( 'submenu_bg_color' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+			'transport'         => 'postMessage',
+		) );
+
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'submenu_bg_color', array(
+			'section'  => 'colors',
+			'label'    => esc_html__( 'Chọn màu nền cho submenu', 'rt-theme' ),
+			'priority' => 40,
+		) ) );
 	}
 
 	/**
@@ -801,10 +814,135 @@ final class RT_Customizer_Manager {
 			'priority'    => 40,
 		) );
 
+		// Related product section
+		$wp_customize->add_section( 'related', array(
+			'title'    => esc_html__( 'Sản phẩm liên quan', 'rt-theme' ),
+			'priority' => 40,
+			'panel'    => 'rt_general_option_panel',
+		) );
+
+		// Related product setting.
+		$wp_customize->add_setting( 'related_on_off' , array(
+			'default'           => rt_default( 'related_on_off' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'related_on_off', array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt Slider sản phẩm liên quan', 'rt-theme' ),
+			'description' => esc_html__( 'Check để bật/uncheck để tắt', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'related',
+			'priority'    => 10,
+		) );
+
+		// Related product setting.
+		$wp_customize->add_setting( 'related_product_items' , array(
+			'default'           => rt_default( 'related_product_items' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'related_product_items', array(
+			'label'       => esc_html__( 'Chọn số sản phẩm liên quan hiển thị', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'related',
+			'priority'    => 20,
+		) );
+
+		// Related product setting.
+		$wp_customize->add_setting( 'related_slider_arrows' , array(
+			'default'           => rt_default( 'related_slider_arrows' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'related_slider_arrows', array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt Mũi tên điều hướng Slider sản phẩm liên quan', 'rt-theme' ),
+			'description' => esc_html__( 'Check để bật/uncheck để tắt', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'related',
+			'priority'    => 30,
+		) );
+
+		// Related product setting.
+		$wp_customize->add_setting( 'related_slider_speed' , array(
+			'default'           => rt_default( 'related_slider_speed' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'related_slider_speed', array(
+			'type'        => 'number',
+			'label'       => esc_html__( 'Chọn tốc độ cuộn', 'rt-theme' ),
+			'description' => esc_html__( 'Chọn con số thích hợp thôi nha bạn hiền :)))', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'related',
+			'priority'    => 40,
+		) );
+
+		// Related product setting.
+		$wp_customize->add_setting( 'related_slider_autoplay' , array(
+			'default'           => rt_default( 'related_slider_autoplay' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'related_slider_autoplay', array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Bật/Tắt chế độ tự động cuộn', 'rt-theme' ),
+			'description' => esc_html__( 'Check để bật/uncheck để tắt', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'related',
+			'priority'    => 50,
+		) );
+
+		// Related product setting.
+		$wp_customize->add_setting( 'related_slider_autoplayspeed' , array(
+			'default'           => rt_default( 'related_slider_autoplayspeed' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'related_slider_autoplayspeed', array(
+			'type'        => 'number',
+			'label'       => esc_html__( 'Chọn tốc độ tự động cuộn', 'rt-theme' ),
+			'description' => esc_html__( 'Chọn con số thích hợp thôi nha bạn hiền :)))', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'related',
+			'priority'    => 60,
+		) );
+
+		// Related product setting.
+		$wp_customize->add_setting( 'related_slider_show' , array(
+			'default'           => rt_default( 'related_slider_show' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'related_slider_show', array(
+			'type'        => 'number',
+			'label'       => esc_html__( 'Chọn số sản phẩm hiển thị trong mỗi lần cuộn', 'rt-theme' ),
+			'description' => esc_html__( 'Chọn con số thích hợp thôi nha bạn hiền :)))', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'related',
+			'priority'    => 70,
+		) );
+
+		// Related product setting.
+		$wp_customize->add_setting( 'related_slider_scroll' , array(
+			'default'           => rt_default( 'related_slider_scroll' ),
+			'sanitize_callback' => array( __CLASS__, 'sanitize_value' ),
+		) );
+
+		$wp_customize->add_control( 'related_slider_scroll', array(
+			'type'        => 'number',
+			'label'       => esc_html__( 'Chọn số sản phẩm mỗi lần cuộn', 'rt-theme' ),
+			'description' => esc_html__( 'Chọn con số thích hợp thôi nha bạn hiền :)))', 'rt-theme' ),
+			'panel'       => 'rt_general_option_panel',
+			'section'     => 'related',
+			'priority'    => 80,
+		) );
+
 		// Above content section
 		$wp_customize->add_section( 'above_content', array(
 			'title'    => esc_html__( 'Phần trên nội dung', 'rt-theme' ),
-			'priority' => 40,
+			'priority' =>50,
 			'panel'    => 'rt_general_option_panel',
 		) );
 

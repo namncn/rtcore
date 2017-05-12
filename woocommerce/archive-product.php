@@ -55,6 +55,8 @@ get_header( 'shop' ); ?>
 
 		<?php if ( have_posts() ) : ?>
 
+			<div class="result_count-ordering clearfix">
+
 			<?php
 				/**
 				 * woocommerce_before_shop_loop hook.
@@ -64,6 +66,8 @@ get_header( 'shop' ); ?>
 				 */
 				do_action( 'woocommerce_before_shop_loop' );
 			?>
+
+			</div>
 
 			<?php woocommerce_product_loop_start(); ?>
 
@@ -80,7 +84,7 @@ get_header( 'shop' ); ?>
 						do_action( 'woocommerce_shop_loop' );
 					?>
 
-					<?php wc_get_template_part( 'content', 'product' ); ?>
+					<?php wc_get_template_part( 'content', 'product-tooltip' ); ?>
 
 				<?php endwhile; // end of the loop. ?>
 

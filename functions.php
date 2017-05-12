@@ -271,6 +271,7 @@ function rt_enqueue_scripts() {
 	wp_enqueue_style( 'slick', get_theme_file_uri( 'assets/css/slick.min.css' ), array(), '1.6.0' );
 
 	wp_enqueue_style( 'rt-main', get_theme_file_uri( 'assets/css/main.css' ), array(), '1.0.0' );
+
 	wp_enqueue_style( 'jquery-ui-base', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', array(), '1.0.0' );
 
 	if ( ! rt_option( 'responsive', true, false ) ) {
@@ -294,13 +295,12 @@ function rt_enqueue_scripts() {
 
 	wp_enqueue_script( 'rt-main',  get_theme_file_uri( 'assets/js/main.js' ), array( 'jquery' ), '1.0.0', true );
 
-	wp_localize_script( 'rt-main', 'tooltip', array(
-		'on_off' => rt_option( 'tooltip', null, false ),
-		'image' => rt_option( 'tooltip_image', null, false ),
-		'title' => rt_option( 'tooltip_title', null, false ),
-		'price' => rt_option( 'tooltip_price', null, false ),
+	wp_localize_script( 'rt-main', 'rt_main', array(
+		'tooltip_on_off'        => rt_option( 'tooltip', null, false ),
+		'tooltip_image'         => rt_option( 'tooltip_image', null, false ),
+		'tooltip_title'         => rt_option( 'tooltip_title', null, false ),
+		'tooltip_price'         => rt_option( 'tooltip_price', null, false ),
 	) );
-
 }
 add_action( 'wp_enqueue_scripts', 'rt_enqueue_scripts' );
 
@@ -315,45 +315,54 @@ function rt_default( $name ) {
 
 	if ( ! $defaults ) {
 		$defaults = apply_filters( 'rt_defaults', array(
-			'responsive'               => true,
-			'site_layout'              => 'full',
-			'site_width'               => '1000',
-			'widget_title_bg'          => '',
-			'category_title_bg'        => '',
-			'main_bg_color'            => '#ea2b33',
-			'sticky_nav_menu'          => false,
-			'include_fb_sdk_js'        => false,
-			'fb_language'              => 'vi_VN',
-			'facebook_app_id'          => '1491529591098383',
-			'header_script'            => '',
-			'header_script_on_off'     => true,
-			'footer_script'            => '',
-			'footer_script_on_off'     => true,
-			'banner_left'              => '',
-			'banner_right'             => '',
-			'enable_header_search'     => true,
-			'above_content_full_width' => false,
-			'thousands_sep'            => '.',
-			'buy_now_btn'              => false,
-			'colums_product_lg'        => 'col-lg-3',
-			'colums_product_md'        => 'col-md-4',
-			'colums_product_sm'        => 'col-sm-6',
-			'colums_product_xs'        => 'col-xs-12',
-			'gutter_width'             => 15,
-			'quickview'                => true,
-			'quickview_mobile'         => false,
-			'tooltip'                  => true,
-			'tooltip_image'            => true,
-			'tooltip_title'            => true,
-			'tooltip_price'            => true,
-			'vertical_mega_menu'       => true,
-			'vertical_mega_menu_title' => esc_html__( 'Danh mục sản phẩm', 'rt-theme' ),
-			'rt_callback_email'        => '',
-			'rt_callback_subject'      => esc_html__( 'Yêu cầu gọi lại', 'rt-theme' ),
-			'rt_callback_message'      => esc_html__( 'Có yêu cầu gọi lại theo số điện thoại', 'rt-theme' ),
-			'rt_product_hotline'       => 'Hotline đặt hàng (07:00 - 22:00): <strong>093 777 83 77</strong> hoặc <strong>0976 79 5678</strong>',
-			'totop'                    => true,
-			'copyright'                => '<a rel="nofollow" target="_blank" href="http://thietkewebmienphi.com/" title="thiet ke website">Design by RT Group</a>',
+			'responsive'                   => true,
+			'site_layout'                  => 'full',
+			'site_width'                   => '1000',
+			'widget_title_bg'              => '',
+			'category_title_bg'            => '',
+			'main_bg_color'                => '#ea2b33',
+			'submenu_bg_color'             => '#484848',
+			'sticky_nav_menu'              => false,
+			'include_fb_sdk_js'            => false,
+			'fb_language'                  => 'vi_VN',
+			'facebook_app_id'              => '1491529591098383',
+			'header_script'                => '',
+			'header_script_on_off'         => true,
+			'footer_script'                => '',
+			'footer_script_on_off'         => true,
+			'banner_left'                  => '',
+			'banner_right'                 => '',
+			'enable_header_search'         => true,
+			'above_content_full_width'     => false,
+			'thousands_sep'                => '.',
+			'buy_now_btn'                  => false,
+			'colums_product_lg'            => 'col-lg-3',
+			'colums_product_md'            => 'col-md-4',
+			'colums_product_sm'            => 'col-sm-6',
+			'colums_product_xs'            => 'col-xs-12',
+			'gutter_width'                 => 15,
+			'quickview'                    => true,
+			'quickview_mobile'             => false,
+			'tooltip'                      => true,
+			'tooltip_image'                => true,
+			'tooltip_title'                => true,
+			'tooltip_price'                => true,
+			'vertical_mega_menu'           => false,
+			'vertical_mega_menu_title'     => esc_html__( 'Danh mục sản phẩm', 'rt-theme' ),
+			'related_on_off'               => 1,
+			'related_product_items'        => 5,
+			'related_slider_arrows'        => true,
+			'related_slider_speed'         => 1000,
+			'related_slider_show'          => 4,
+			'related_slider_scroll'        => 1,
+			'related_slider_autoplay'      => true,
+			'related_slider_autoplayspeed' => 1000,
+			'rt_callback_email'            => '',
+			'rt_callback_subject'          => esc_html__( 'Yêu cầu gọi lại', 'rt-theme' ),
+			'rt_callback_message'          => esc_html__( 'Có yêu cầu gọi lại theo số điện thoại', 'rt-theme' ),
+			'rt_product_hotline'           => 'Hotline đặt hàng (07:00 - 22:00): <strong>093 777 83 77</strong> hoặc <strong>0976 79 5678</strong>',
+			'totop'                        => true,
+			'copyright'                    => '<a rel="nofollow" target="_blank" href="http://thietkewebmienphi.com/" title="thiet ke website">Design by RT Group</a>',
 		) );
 	}
 
