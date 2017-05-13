@@ -26,7 +26,6 @@ global $post, $product;
 <div class="rt_woocommerce-product-gallery">
 	<figure class="rt-woocommerce-product-gallery__wrapper clearfix">
 		<div class="rt-woocommerce-product-thumbnail">
-			<?php //the_post_thumbnail( 'full', array( 'class' => 'cloudzoom', 'alt' => 'Cloud Zoom small image', 'id' => 'zoom1', 'data-cloudzoom' => 'zoomSizeMode:"image",autoInside: 550' ) ); ?>
 			<img class="cloudzoom" alt ="Cloud Zoom small image" id ="zoom1" src="<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ) ?>" data-cloudzoom="zoomSizeMode:'image',autoInside: 550">
 		</div>
 

@@ -33,20 +33,17 @@ $colums_sm = rt_option( 'colums_product_sm', null, false );
 $colums_xs = rt_option( 'colums_product_xs', null, false );
 
 $colums_classes = $colums_lg . ' ' . $colums_md . ' ' . $colums_sm . ' ' . $colums_xs;
-
-$data_image = get_the_post_thumbnail_url( null, 'full' );
-
 ?>
-<li <?php post_class( 'rt-tooltip ' . $colums_classes ); ?> data-tooltip='{"image": "<?php echo esc_attr( $data_image ); ?>"}'>
+<li <?php post_class( $colums_classes ); ?>>
 	<div class="product_item">
 	<?php
 	/**
 	 * woocommerce_before_shop_loop_item_title hook.
 	 *
 	 * @hooked woocommerce_show_product_loop_sale_flash - 10
-	 * @hooked rt_woocommerce_template_loop_product_thumbnail - 10
+	 * @hooked rt_tooltip_woocommerce_template_loop_product_thumbnail - 15
 	 */
-	do_action( 'woocommerce_before_shop_loop_item_title' );
+	do_action( 'tooltip_woocommerce_before_shop_loop_item_title' );
 
 	/**
 	 * woocommerce_shop_loop_item_title hook.

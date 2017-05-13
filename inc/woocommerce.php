@@ -26,12 +26,14 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 6 );
 
-
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
 
 // Breadcrumb
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 add_action( 'woocommerce_before_single_product', 'woocommerce_breadcrumb', 5 );
+
+add_action( 'tooltip_woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
+add_action( 'tooltip_woocommerce_before_shop_loop_item_title', 'rt_tooltip_woocommerce_template_loop_product_thumbnail', 15 );
 
 if ( ! function_exists( 'rt_woocommerce_get_product_thumbnail' ) ) {
 
@@ -66,6 +68,15 @@ if ( ! function_exists( 'rt_woocommerce_get_product_thumbnail' ) ) {
  */
 function rt_woocommerce_template_loop_product_thumbnail() {
 	echo '<a href="' . get_the_permalink() . '">' . rt_woocommerce_get_product_thumbnail() . '</a>';
+}
+
+/**
+ * rt_tooltip_woocommerce_template_loop_product_thumbnail
+ *
+ * @return [type] [description]
+ */
+function rt_tooltip_woocommerce_template_loop_product_thumbnail() {
+	echo "<a class='rt-tooltip' data-tooltip='{\"image\": \"" . esc_attr( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ) . "\"}' href='" . get_the_permalink() . "'>" . rt_woocommerce_get_product_thumbnail() . "</a>";
 }
 
 /**

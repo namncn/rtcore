@@ -48,8 +48,8 @@
             items: '[data-tooltip]',
             content: function() {
                 var tooltip_json = $(this).data( 'tooltip' );
-                var title = $(this).find('.rt_woocommerce-loop-product__title a').text();
-                var price = $(this).find('.price').html();
+                var title = $(this).parent( '.product_item' ).find('.rt_woocommerce-loop-product__title a').text();
+                var price = $(this).parent( '.product_item' ).find('.price').html();
                 var html = '';
 
                 if ( rt_main.tooltip_image ) {

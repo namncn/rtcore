@@ -28,7 +28,7 @@ $regular_price = $product->get_regular_price();
 if ( empty( $sale_price ) ) {
 	$per = '-0%';
 } else {
-	$per = absint ( ( $regular_price - $sale_price ) / $regular_price * 100 );
+	$per = absint( ( $regular_price - $sale_price ) / $regular_price * 100 );
 }
 
 ?>
