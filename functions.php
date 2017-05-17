@@ -296,10 +296,15 @@ function rt_enqueue_scripts() {
 	wp_enqueue_script( 'rt-main',  get_theme_file_uri( 'assets/js/main.js' ), array( 'jquery' ), '1.0.0', true );
 
 	wp_localize_script( 'rt-main', 'rt_main', array(
-		'tooltip_on_off'        => rt_option( 'tooltip', null, false ),
-		'tooltip_image'         => rt_option( 'tooltip_image', null, false ),
-		'tooltip_title'         => rt_option( 'tooltip_title', null, false ),
-		'tooltip_price'         => rt_option( 'tooltip_price', null, false ),
+		'tooltip_on_off' => rt_option( 'tooltip', null, false ),
+		'tooltip_image'  => rt_option( 'tooltip_image', null, false ),
+		'tooltip_title'  => rt_option( 'tooltip_title', null, false ),
+		'tooltip_price'  => rt_option( 'tooltip_price', null, false ),
+		'thumbelina'     => rt_option( 'thumbelina', null, false ),
+	) );
+
+	wp_localize_script( 'rtcore-main', 'rtcore_main', array(
+		'thumbelina'     => rt_option( 'thumbelina', null, false ),
 	) );
 }
 add_action( 'wp_enqueue_scripts', 'rt_enqueue_scripts' );
@@ -351,12 +356,13 @@ function rt_default( $name ) {
 			'vertical_mega_menu_title'     => esc_html__( 'Danh mục sản phẩm', 'rt-theme' ),
 			'related_on_off'               => 1,
 			'related_product_items'        => 5,
-			'related_slider_arrows'        => true,
+			'related_slider_arrows'        => 1,
 			'related_slider_speed'         => 1000,
 			'related_slider_show'          => 4,
 			'related_slider_scroll'        => 1,
 			'related_slider_autoplay'      => true,
 			'related_slider_autoplayspeed' => 1000,
+			'thumbelina'                   => 'vertical',
 			'rt_callback_email'            => '',
 			'rt_callback_subject'          => esc_html__( 'Yêu cầu gọi lại', 'rt-theme' ),
 			'rt_callback_message'          => esc_html__( 'Có yêu cầu gọi lại theo số điện thoại', 'rt-theme' ),

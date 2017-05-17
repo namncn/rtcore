@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $post, $product;
 
 ?>
-<div class="rt_woocommerce-product-gallery">
+<div class="rt_woocommerce-product-gallery <?php echo ( 'vertical' == rt_option( 'thumbelina', null, false ) ) ? 'vertical' : 'horizontal'; ?>">
 	<figure class="rt-woocommerce-product-gallery__wrapper clearfix">
 		<div class="rt-woocommerce-product-thumbnail">
 			<img class="cloudzoom" alt ="Cloud Zoom small image" id ="zoom1" src="<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ) ?>" data-cloudzoom="zoomSizeMode:'image',autoInside: 550">

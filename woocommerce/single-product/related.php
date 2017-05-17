@@ -59,7 +59,7 @@ jQuery(document).ready(function($) {
 		slidesToScroll: <?php rt_option( 'related_slider_scroll' ); ?>,
 		autoplay: <?php rt_option( 'related_slider_autoplay' ); ?>,
 		autoplaySpeed: <?php rt_option( 'related_slider_autoplayspeed' ); ?>,
-		arrows: <?php rt_option( 'related_slider_arrows' ); ?>,
+		arrows: <?php echo ( 1 === rt_option( 'related_slider_arrows', null, false ) ) ? 'true' : 'false'; ?>,
 		prevArrow: '<button type="button" class="slick-prev"></button>',
 		nextArrow: '<button type="button" class="slick-next"></button>',
 		dots: false,

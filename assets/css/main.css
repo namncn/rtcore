@@ -862,12 +862,12 @@ img {
     }
 }
 
-.single-product .rt_woocommerce-product-gallery .rt-woocommerce-product-thumbnail {
+.single-product .rt_woocommerce-product-gallery.vertical .rt-woocommerce-product-thumbnail {
     width: 82%;
     float: right;
 }
 
-.single-product .rt_woocommerce-product-gallery .rt-woocommerce-product-gallery-nav {
+.single-product .rt_woocommerce-product-gallery.vertical .rt-woocommerce-product-gallery-nav {
     position: relative;
     width: 16.75%;
     max-width: 91px;
@@ -877,12 +877,23 @@ img {
     overflow: hidden;
 }
 
+.single-product .rt_woocommerce-product-gallery.horizontal .rt-woocommerce-product-gallery-nav {
+    height: 20px;
+    z-index: 999;
+    position: relative;
+    width: 100%;
+    height: 130px !important;
+    cursor: pointer;
+    box-shadow: none !important;
+    border: 0;
+}
+
 @media (max-width: 414px) {
-    .single-product .rt_woocommerce-product-gallery .rt-woocommerce-product-gallery-nav {
+    .single-product .rt_woocommerce-product-gallery.vertical .rt-woocommerce-product-gallery-nav {
         display: none;
     }
 
-    .single-product .rt_woocommerce-product-gallery .rt-woocommerce-product-thumbnail {
+    .single-product .rt_woocommerce-product-gallery.vertical .rt-woocommerce-product-thumbnail {
         float: none;
         width: 100%;
     }
@@ -898,11 +909,14 @@ img {
     padding: 5px;
     border-color: #ccc;
     margin: 10px 0;
-    width: 100%;
     height: auto;
 }
 
-.single-product .rt_woocommerce-product-gallery .thumbelina-but {
+.rt_woocommerce-product-gallery.vertical .rt-woocommerce-product-gallery-nav .woocommerce-product-gallery__image {
+    width: 100%;
+}
+
+.single-product .rt_woocommerce-product-gallery.vertical .thumbelina-but {
     height: 20px;
     z-index: 999;
     position: absolute;
@@ -925,6 +939,26 @@ img {
 .single-product .rt_woocommerce-product-gallery .thumbelina-but.right {
     bottom: 0;
     background: url( ../images/arrow-bottom.jpg ) center;
+}
+
+.single-product .rt_woocommerce-product-gallery.horizontal .thumbelina-but.left,
+.single-product .rt_woocommerce-product-gallery.horizontal .thumbelina-but.right {
+    height: 80px;
+    width: 20px;
+    box-shadow: none;
+    border: none;
+    top: 52%;
+    transform: translateY(-50%);
+}
+
+.single-product .rt_woocommerce-product-gallery.horizontal .thumbelina-but.left {
+    background: url(../images/arrow-left.jpg) center;
+    left: 0;
+}
+
+ .single-product .rt_woocommerce-product-gallery.horizontal .thumbelina-but.right {
+    background: url(../images/arrow-right.jpg) center;
+    right: 0;
 }
 
 .woocommerce div.product form.cart .button {
